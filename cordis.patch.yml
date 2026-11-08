@@ -1,0 +1,11 @@
+# dsh-update-command bundle patch: inserts the plugin row into the profile roster.
+# The node half (exports ".") runs in the Host process: it reads the plugin
+# versions that dsh-update-checker already resolved (/dsh-update-checker/plugins.json),
+# maps each plugin to the profile that holds it, and renders the exact
+# `dsh plugin --profile <p> add|update <name>@<version>` command.
+# The `dsh.client` declaration in package.json loads the browser half
+# (exports "./client", served at /plugins/dsh-update-command/client.js):
+# a Settings section with per-plugin copy buttons and "copy all".
+- insert:
+    - id: dsh-update-command
+      name: 'dsh-update-command'

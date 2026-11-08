@@ -1,0 +1,52 @@
+{
+  "name": "dsh-update-command",
+  "version": "0.1.1",
+  "description": "dsh-update-checker 的附加插件：读取它查到的插件版本，生成一键复制的 dsh plugin --profile <p> add <name>@<ver> 更新命令。",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./client/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sixtysevenlf/dsh-update-command.git"
+  },
+  "homepage": "https://github.com/sixtysevenlf/dsh-update-command#readme",
+  "bugs": {
+    "url": "https://github.com/sixtysevenlf/dsh-update-command/issues"
+  },
+  "author": "sixtysevenlf",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "update",
+    "cordis",
+    "plugin"
+  ]
+}
