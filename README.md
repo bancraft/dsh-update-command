@@ -41,9 +41,17 @@ dsh plugin --profile web add dsh-connect-workbuddy@5.19.1
 
 ## 安装
 
-### A. 装到另一台电脑（推荐：用 tarball）
+### A. 直接从 GitHub 装（推荐）
 
-`link:` 只在本机有效，拷到别的电脑是坏路径。把仓库里的
+```powershell
+dsh plugin --profile web add https://github.com/sixtysevenlf/dsh-update-command
+```
+
+装完**重启 DSH**，然后在设置里找「更新命令」一节。
+
+### B. 从 release 的 tarball 装（GitHub 直装不通时）
+
+GitHub 直装被网络挡住时（国内环境常见），把 release 里的
 `dsh-update-command-0.1.1.tgz` 拷过去，在**那台机器**上执行：
 
 ```powershell
@@ -56,16 +64,16 @@ dsh plugin --profile web add C:\path\to\dsh-update-command-0.1.1.tgz
 
 装完**重启 DSH**，然后在设置里找「更新命令」一节。
 
-### B. 本机开发（改完即生效）
+### C. 本机开发（改完即生效）
 
 ```powershell
-dsh plugin --profile web add link:C:/Users/qian/Documents/deepseek-harness/default-workspace/dsh-update-command
+dsh plugin --profile web add link:C:/path/to/dsh-update-command
 ```
 
 `link:` 装的是一个符号链接，改动源码后刷新页面就能看到，适合边改边看；
-但它**不能跨机器**，拷给别人务必用 A 里的 tgz。
+但它**不能跨机器**，拷给别人请用 A 或 B 的方式。
 
-### C. 从源码重新打包
+### D. 从源码重新打包
 
 改完源码要重新出包：
 
