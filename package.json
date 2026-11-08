@@ -34,13 +34,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sixtysevenlf/dsh-update-command.git"
+    "url": "git+https://github.com/bancraft/dsh-update-command.git"
   },
-  "homepage": "https://github.com/sixtysevenlf/dsh-update-command#readme",
+  "homepage": "https://github.com/bancraft/dsh-update-command#readme",
   "bugs": {
-    "url": "https://github.com/sixtysevenlf/dsh-update-command/issues"
+    "url": "https://github.com/bancraft/dsh-update-command/issues"
   },
-  "author": "sixtysevenlf",
+  "author": "bancraft",
   "keywords": [
     "dsh",
     "dsh-plugin",

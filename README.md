@@ -44,7 +44,7 @@ dsh plugin --profile web add dsh-connect-workbuddy@5.19.1
 ### A. 直接从 GitHub 装（推荐）
 
 ```powershell
-dsh plugin --profile web add https://github.com/sixtysevenlf/dsh-update-command
+dsh plugin --profile web add https://github.com/bancraft/dsh-update-command
 ```
 
 装完**重启 DSH**，然后在设置里找「更新命令」一节。
