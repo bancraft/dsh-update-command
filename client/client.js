@@ -38,6 +38,8 @@ window.__ModuleLoader__.load({
       ".dsuc-chip{font-size:11px;padding:1px 7px;border-radius:999px;border:1px solid var(--dsw-alias-border-l2,#d1d5db);color:var(--dsw-alias-label-secondary,#5b6472);white-space:nowrap;}" +
       ".dsuc-chip.dsuc-up{border-color:var(--dsw-alias-brand-primary,#4f8cff);color:var(--dsw-alias-brand-primary,#4f8cff);}" +
       ".dsuc-chip.dsuc-warnchip{border-color:var(--dsw-alias-state-warn-primary,#f59e0b);color:var(--dsw-alias-state-warn-label,#b45309);}" +
+      ".dsuc-chip.dsuc-target{border-color:var(--dsw-alias-brand-primary,#4f8cff);color:var(--dsw-alias-brand-primary,#4f8cff);font-weight:600;}" +
+      ".dsuc-chip.dsuc-detected{border-style:dashed;color:var(--dsw-alias-label-secondary,#5b6472);}" +
       ".dsuc-vers{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:var(--dsw-alias-label-secondary,#5b6472);}" +
       ".dsuc-cmd{display:flex;align-items:stretch;gap:6px;}" +
       ".dsuc-code{flex:1 1 auto;min-width:0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;padding:5px 8px;border-radius:6px;border:1px solid var(--dsw-alias-border-l2,#d1d5db);background:var(--dsw-alias-bg-layer-1,rgba(127,127,127,.10));overflow-x:auto;white-space:pre;user-select:all;}" +
@@ -75,6 +77,8 @@ window.__ModuleLoader__.load({
       "unresolved": "版本未解析（检查器失败），已退化为 @latest",
       "summary": "共 {total} 个插件，其中 {up} 个可更新",
       "profileChip": "profile: {profile}",
+      "targetChip": "→ {profile}",
+      "detectedChip": "实际装在 {profile}",
       "basisDeclaredInstalled": "清单声明 + 已安装",
       "basisInstalled": "仅已安装",
       "basisDeclared": "仅清单声明",
@@ -108,6 +112,8 @@ window.__ModuleLoader__.load({
       "unresolved": "version unresolved (checker failed); fell back to @latest",
       "summary": "{total} plugins, {up} with updates",
       "profileChip": "profile: {profile}",
+      "targetChip": "→ {profile}",
+      "detectedChip": "installed in {profile}",
       "basisDeclaredInstalled": "declared + installed",
       "basisInstalled": "installed only",
       "basisDeclared": "declared only",
@@ -355,7 +361,15 @@ window.__ModuleLoader__.load({
             var chips = [];
             if (c.profile) {
               chips.push(
-                react.createElement("span", { key: "p", className: "dsuc-chip" }, t("profileChip", { profile: c.profile }))
+                react.createElement("span", { key: "p", className: "dsuc-chip dsuc-target" }, t("targetChip", { profile: c.profile }))
+              );
+            }
+            // Show where the installed copy actually lives when it differs from
+            // the target, so "updates here, installed there" is visible rather than
+            // silently producing a fresh install.
+            if (c.detectedProfile && c.detectedProfile !== c.profile) {
+              chips.push(
+                react.createElement("span", { key: "d", className: "dsuc-chip dsuc-detected" }, t("detectedChip", { profile: c.detectedProfile }))
               );
             }
             if (c.basis) {

@@ -27,6 +27,7 @@ dsh plugin --profile web add dsh-connect-workbuddy@5.19.1
 | --- | --- |
 | 读谁的版本 | `/dsh-update-checker/plugins.json`（检查器自己已经解析好的结果，尊重它的缓存） |
 | 归到哪个 profile | 优先「清单里声明 + 磁盘上真的装着」的那份；其次只看磁盘副本；再次看清单声明；最后才退回当前运行的 profile |
+| 命令里的 profile | **固定写 desktop**（无条件）。检测到的原 profile 另作「实际装在 x」展示，不参与命令生成 |
 | `add` 还是 `update` | 默认 `add`——这是**真正能锁定版本**的写法，插件不在清单里时也能用。`update` 只改动已声明的依赖条目，作为可切换的备选 |
 | 版本解析失败时 | 退化成 `@latest`，并在界面上明确标注「版本未解析」，不假装已是最新 |
 

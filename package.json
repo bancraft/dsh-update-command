@@ -1,6 +1,6 @@
 {
   "name": "dsh-update-command",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "dsh-update-checker 的附加插件：读取它查到的插件版本，生成一键复制的 dsh plugin --profile <p> add <name>@<ver> 更新命令。",
   "type": "module",
   "main": "./lib/index.js",
